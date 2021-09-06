@@ -1,0 +1,15 @@
+apiVersion: v2
+name: grafana
+version: 6.16.4
+appVersion: 8.1.2
+kubeVersion: '^1.8.0-0'
+description: The leading tool for querying and visualizing time series and metrics.
+home: https://lobocode.github.io
+icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
+sources:
+  - https://github.com/chaosre/iac/tree/main/tf-aws-eks-cluster/helm/grafana
+maintainers:
+  - name: vitor lobo
+    email: lobocode@gmail.com
+engine: gotpl
+type: application
