@@ -28,7 +28,7 @@ kubectl get nodes
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](/issues). 
+Contributions, issues and feature requests are welcome!<br />Feel free to check **[issues page](https://github.com/chaosre/iac/issues)**. 
 
 ## Show your support
 
