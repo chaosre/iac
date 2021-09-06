@@ -1,4 +1,4 @@
-resource aws_eks_cluster eks_cluster {
+resource "aws_eks_cluster" "eks_cluster" {
 
     name    = var.cluster_name
     version = var.k8s_version

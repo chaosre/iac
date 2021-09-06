@@ -1,6 +1,6 @@
-resource aws_security_group cluster_sg {
+resource "aws_security_group" "cluster_sg" {
 
-    name = format("%s-master-sg", var.cluster_name)
+    name = format("%s-cluster-sg", var.cluster_name)
     vpc_id = var.cluster_vpc.id
 
     egress {
@@ -17,7 +17,7 @@ resource aws_security_group cluster_sg {
 
 }
 
-resource aws_security_group_rule cluster_ingress_https {
+resource "aws_security_group_rule" "cluster_ingress_https" {
     cidr_blocks = ["0.0.0.0/0"]
     from_port   = 443
     to_port     = 443
