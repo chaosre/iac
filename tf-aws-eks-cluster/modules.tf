@@ -20,8 +20,8 @@ module "nodes" {
   private_subnet_1a   = module.network.private_subnet_1a
   private_subnet_1c   = module.network.private_subnet_1c
 
-  eks_cluster         = module.master.eks_cluster
-  eks_cluster_sg      = module.master.security_group
+  eks_cluster         = module.cluster.eks_cluster
+  eks_cluster_sg      = module.cluster.security_group
 
   nodes_instances_sizes   = var.nodes_instances_sizes
   auto_scale_options      = var.auto_scale_options
