@@ -15,7 +15,6 @@ hostAliases:
 {{- if .Values.priorityClassName }}
 priorityClassName: {{ .Values.priorityClassName }}
 {{- end }}
-{{- if ( or .Values.persistence.enabled .Values.dashboards .Values.sidecar.datasources.enabled .Values.sidecar.notifiers.enabled .Values.extraInitContainers) }}
 initContainers:
 {{- end }}
 {{- if ( and .Values.persistence.enabled .Values.initChownData.enabled ) }}
@@ -510,5 +509,4 @@ volumes:
 {{- end -}}
 {{- if .Values.extraContainerVolumes }}
 {{ toYaml .Values.extraContainerVolumes | indent 2 }}
-{{- end }}
 {{- end }}
