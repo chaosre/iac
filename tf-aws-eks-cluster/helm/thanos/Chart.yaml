@@ -1,0 +1,19 @@
+apiVersion: v2
+name: thanos
+version: 5.4.0
+appVersion: 0.22.0
+description: Thanos is a highly available metrics system that can be added on top of existing Prometheus deployments, providing a global query view across all Prometheus installations.
+home: https://lobocode.github.io
+#icon: 
+keywords:
+  - analytics
+  - monitoring
+  - prometheus
+  - thanos
+sources:
+  - https://github.com/chaosre/iac/tree/main/tf-aws-eks-cluster/helm/thanos
+maintainers:
+  - name: vitor lobo
+    email: lobocode@gmail.com
+engine: gotpl
+type: application
