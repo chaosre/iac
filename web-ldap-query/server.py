@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 
 # https://docs.python.org/3/library/urllib.parse.html
 from urllib.parse import urlparse
@@ -47,6 +48,8 @@ def login():
         user = form.user
         # flask_login stores user in session
         login_user(user)
+        app.logger.info("Logging in as user '%s'" % user.username)
+        app.logger.info("Groups: %s" % user.groups)
         if user.groups:
             identify = {'uisername': user.username, 'groups': user.groups}
         else:
@@ -57,4 +60,5 @@ def login():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.logger.setLevel(logging.DEBUG)
+    app.run(host='localhost', port=5000, debug=True)
