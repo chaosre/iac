@@ -11,13 +11,16 @@ from flask import (
     make_response
 )
 # https://flask-login.readthedocs.io/en/latest/
-from flask_login import LoginManager, current_user
+from flask_login import LoginManager, current_user, login_user
 
 # https://flask-ldap3-login.readthedocs.io/en/latest/quick_start.html
+from flask_ldap3_login import LDAP3LoginManager
 from flask_ldap3_login.forms import LDAPLoginForm
 
 
 app = Flask(__name__)
+
+login_manager = LoginManager(app)
 
 def url_path(url):
     # extract path and query parameters from URL
