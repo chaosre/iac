@@ -4,6 +4,7 @@ import flask
 from flask import Flask, request, flash
 #from shelljob import proc
 import os
+import logging
 
 app = Flask(__name__)
 
@@ -164,6 +165,13 @@ form input[type="submit"]:hover {
 </html>
 """
 
+# set as part of the config
+SECRET_KEY = 'many random bytes'
+
+# or set directly on the app
+app.secret_key = 'many random bytes'
+
+
 @app.route( '/' )
 def index():
     return PAGE
@@ -177,9 +185,19 @@ def process_form():
     stream = os.popen('uname %s %s %s' % (racf, senha, grupoad))
     output = stream.read()
 
-    data_result = "<body style='background: linear-gradient(45deg, #e2a32d, #e06c00); min-height: 100vh; min-width: 100vw; display: flex; align-items: center; justify-content: center;'><main class='container', style='background: white; min-width: 1em; padding: 2rem; padding: 2rem; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); border-radius: 4px;'>{}</main></body>"
+    data_result = "<body style='background: linear-gradient(45deg, #e2a32d, #e06c00); min-height: 100vh; min-width: 100vw; display: flex; align-items: center; justify-content: center;'><main class='container', style='background: white; min-width: 1em; padding: 2rem; padding: 2rem; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); border-radius: 4px;'>{}</main><form class='voltar-btn' style='margin: 1em;'><input type='button' value='Voltar' onclick='history.back()' style='padding: 2.4em; background: #ff8f00; color: white; border-radius: 4px;'></form></body>"
 
-    return data_result.format(output)
+    
+
+    if len(racf) == 0 or len(senha) == 0 or  len(grupoad) == 0:
+        return data_result.format('Por favor preencha os 3 campos')
+    else:
+        if len(senha) > 0 and len(output) == 0:
+            return data_result.format('Senha incorreta! Por favor digite novamente!')
+        elif len(grupoad) > 0 and len(output) == 0:
+            return data_result.format('GrupoAD nao existe!')
+        else:
+            return data_result.format(output)
 
 
 if __name__ == '__main__':
